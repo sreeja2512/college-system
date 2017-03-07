@@ -1,0 +1,72 @@
+<div ng-controller="studentDetails">
+<div class="row">
+  <div class="col-sm-6">
+    <div class="form-group">
+      <label for="inputFirstName">Roll No {{edit}}</label>
+      <input type="text" class="form-control" id="inputRollNo" placeholder="Roll No"
+       ng-model="model.rollno" ng-disabled="model.rollno && edit">
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="form-group">
+      <label for="inputName">Name</label>
+      <input type="text" class="form-control" id="inputName" placeholder="Name"
+      ng-model="model.name" ng-pattern="/^[A-Za-z]*$/">
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="form-group">
+      <label for="inputAddress">Address</label>
+      <input type="text" class="form-control" id="inputAddress" placeholder="Address"
+      ng-model="model.add">
+    </div>
+  </div>
+ 
+  <div class="col-sm-6">
+    <div class="form-group">
+      <label for="inputPhoneNo">Phone No</label>
+      <input type="text" class="form-control" id="inputPhoneNo" placeholder="Phone No"
+      ng-model="model.phno" maxlength="10" ng-pattern="/^[0-9]*$/">
+    </div>
+  </div>
+ </div>
+ <div class="row">
+  <div class="col-sm-6">
+    <div class="form-group">
+      <label for="inputFirstName">Gender</label>
+      <input type="text" class="form-control" id="inputGender" placeholder="Gender"
+       ng-model="model.gender">
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="form-group">
+      <label for="inputDateOfBirth">Date Of Birth</label>
+      <input type="text" class="form-control" id="inputDateOfBirth" placeholder="Date Of Birth" 
+      ng-model="model.dob">
+    </div>
+  </div>
+ </div>
+ <div class="row">
+  <div class="col-sm-6">
+    <div class="form-group">
+      <label for="inputDateOfAdmission">Date Of Admission</label>
+      <input type="text" class="form-control" id="inputDateOfAdmission" placeholder="Date Of Admission"
+      ng-model="model.doa">
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="form-group">
+      <label for="inputClass">Class</label>
+      <input type="text" class="form-control" id="inputClass" placeholder="Class" 
+      ng-model="model.stud_class">
+    </div>
+  </div> 
+  </div>
+  <button type="submit" class="btn btn-primary" ng-click="saveStudent()" ng-hide="model.rollno && edit">
+   Submit</button>
+  <button ng-click="updateStudent()" class="btn btn-primary"
+	ng-show="model.rollno && edit">Update</button>
+  <button ng-click="gotoListStuent()" class="btn btn-primary">Next</button>
+</div>

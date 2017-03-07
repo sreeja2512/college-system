@@ -1,0 +1,27 @@
+<div ng-controller="StudentController" class="studDetails">		
+	<form name="registerForm">
+		<div  class="pad-mar">
+			<label>Name</label>
+			<div  class="input"><input type="text" name="name1" required ng-model="model.name" ng-pattern="/^[A-Za-z]*$/">
+				<!-- <div ng-messages="registerForm.name1.$error" role="alert"><div ng-message="required">This field should not blank</div>
+				</div> -->
+			</div>
+			
+		</div>			
+		<div  class="pad-mar">
+			<label>Email-Id</label>
+			<div  class="input"><input type="text" name="email1" required ng-model="model.emailid"></div><!-- ng-pattern="/\S+@\S+\.\S+/" -->
+		</div>
+		<div  class="pad-mar"> 
+			<label>Password</label>
+			<div  class="input"><input type="password" name="pass1" required ng-model="model.password"></div>
+		</div>
+		<div  class="pad-mar">
+			<label>Mobile No</label>
+			<div class="input"><input type="text" name="mob1" required ng-model="model.mobno" maxlength="10" ng-pattern="/^[0-9]*$/"></div>
+		</div>
+		<div>					
+			<button class="registerBtnstyle" ng-click="registerUser()">Register</button>
+		</div>		
+	</form>
+</div>

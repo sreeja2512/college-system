@@ -1,0 +1,279 @@
+.myDiv
+{
+	background:#8aea8a;
+}
+.searchText{
+	border-radius: 4px;
+    border: 1px solid blue;
+    width: 400px;
+    margin-left: 460px;
+    padding-left: 0px;
+	text-align: center;
+	margin-bottom: 10px;
+}
+.myDiv{
+	height:300px;
+	width:300px;
+	background:red;
+	border: 2px;
+	border-style:dashed;
+	border-color:blue;
+}
+
+.myTxtboxHeight{
+padding:10px;
+height:100px;
+width : 500px;
+background:yellow;
+border: 2px solid black;
+}
+
+.myTxtboxWidth{
+height:100px;
+width : 100px;
+border: 2px solid black;
+}
+
+.myTxtboxBorder{
+height:100px;
+width:100px;
+border:1px solid red;
+}
+.dir{
+	height:20px;
+	margin-top:150px;
+	background:yellow;
+}
+.list-type-none{
+	list-style: none;
+	border:1px solid green;
+	padding: 20px;
+	width: 550px;
+}
+h3{
+	text-transform: uppercase;
+}
+.float-rigth{
+	/*float: right;*/
+	margin-left: 482px;
+	cursor: pointer;
+}
+.pad-mar{
+	margin-top: 17px;
+    margin-left: 10px;
+}
+.input{
+	float: right;
+	width: 300px;
+	display: inline;
+}
+.input input{
+	border-radius: 4px;
+	padding-left: 5px;
+	color: #17159a;
+    font-weight: bold;
+}
+
+.divbg{
+	background-color : grey;
+}
+
+.studDetails{
+	background:lightgrey;
+	color:black;
+	width: 90%;
+	min-width: 320px;
+	max-width: 500px;
+	margin: auto;
+	margin-top: 50px;
+	border-radius: 25px;
+	padding:20px 30px 20px 30px;
+}
+
+.btnstyle{
+	background-color: cornsilk;
+    margin-top: 15px;
+    margin-left: 100px;
+    padding: 8px 8px 8px 8px;
+    border-radius: 10px;
+    width: 80px;    
+}
+
+.contactUsbg{
+	background-color: aquamarine;
+}
+
+.marginForTxt{
+	margin-top: 27px;
+    margin-left: 30px;
+    margin-right: 60%;
+}
+
+.btnstyle{
+	background-color: cornsilk;
+    margin-top: 20px;
+    margin-left: 130px;
+    padding: 8px 8px 8px 8px;
+    border-radius: 10px;
+    width: 80px;    
+}
+
+.radiostyle{
+    float: right;
+    width: 407px;    
+}
+
+.txtAreastyle{
+	margin-left: 38px;
+    border-radius: 6px;
+    border-top-width: 2.5px;
+    border-left-width: 2.5px;
+    color: #17159a;
+    font-weight: bold;
+    padding-left: 5px;
+}
+
+.error-msg{
+	color: red;
+    text-transform: uppercase;
+    display: inline;
+    font-family: monospace;
+    font-size: 1.2em;
+    position: absolute;
+    margin-left: 212px;
+}
+
+.userIdTxt{
+	text-align: center;
+    width: 280px;
+    margin-top: 25px;
+    margin-left: 80px;
+    line-height: 35px;
+    border-radius: 10px;
+}
+
+.loginBtn{
+	background-color: cornsilk;
+    border-radius: 15px;
+    width: 100px;
+    margin-top: 17px;
+    margin-bottom: 31px;
+    margin-left: 165px;
+    line-height: 35px;
+}
+
+.registerLink{
+	color: blue;
+    margin-left: 86px;
+    margin-right: 50px;
+}
+
+.registerBtnstyle{
+	background-color: cornsilk;
+    margin-top: 20px;
+    margin-left: 140px;
+    padding: 8px 8px 8px 8px;
+    border-radius: 10px;
+    width: 80px;    
+}
+
+
+.forgotLink{
+	color: blue;
+}
+
+.forgotPswrdPgTxtbx{
+	float: right;
+    width: 245px;
+    display: inline;
+}
+
+.sendPswrdBtnStyle{
+	background-color: cornsilk;
+    margin-top: 20px;
+    margin-left: 195px;    
+    border-radius: 10px;
+    width: 80px;
+    line-height: 30px;
+}
+.trans-btn{
+	background: transparent;
+    border: 0;
+    cursor: pointer;
+}
+.width-20{
+	width: 20px;
+}
+.width-35{
+	width: 35px;
+}
+.width-40{
+	width: 40px;
+}
+.disable-row{
+	background: wheat;
+    text-decoration: line-through;
+}
+.addstud-btn{
+	background-color: cornsilk;
+    margin-top: 20px;
+    border-radius: 10px;
+    width: 136px;
+    float: right;
+    margin-right: 25px;
+    line-height: 2;
+    font-weight: bold;
+}
+
+.w-110{
+	width: 110px;
+}
+.w-130{
+	width: 130px;
+}
+.w-150{
+	width: 150px;
+}
+.w-140{
+	width: 140px;
+}
+.w-160{
+	width: 160px;
+}
+.w-180{
+	width: 180px;
+}
+.w-200{
+	width: 200px;
+}
+.border-radius{
+	border-radius: 10px;
+}
+.txtstyle{
+	font-weight: bold;
+    padding: 15px;
+}
+.my-controller {
+  border: 1px solid #fcc;
+  padding: 5px;
+  margin: 3px;
+}
+.my-controller small {
+  color: #c99;
+}
+.other-controller {
+  border: 1px solid #ccf;
+  padding: 5px;
+  margin: 3px;
+}
+.other-controller small {
+  color: #99c;
+}
+.third-controller {
+  border: 1px solid #cfc;
+  padding: 5px;
+  margin: 3px;
+}
+.third-controller small {
+  color: #9c9;
+}

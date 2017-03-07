@@ -1,0 +1,66 @@
+<div ng-controller="studentDetails">
+	<div ng-init="getStudentList()">
+	<div>
+		<label class="txtstyle">Search:</label>
+		<input type="text" ng-model="searchText" class="border-radius">
+		<label class="txtstyle">Items per page:</label>
+		<input type="text" ng-model="pageSize" class="border-radius">
+		</div>
+		<table class="table">
+			<thead>
+				<tr>
+					<th class="w-110" ng-click="sortBy='roll'; sortReverse = !sortReverse">ROLL NO
+						<i class="fa fa-sort-asc" ng-show="sortBy=='roll' && sortReverse"></i>
+						<i class="fa fa-sort-desc" ng-show="sortBy=='roll' && !sortReverse"></i>
+					</th>
+					<th class="w-130" ng-click="sortBy='name'; sortReverse = !sortReverse">NAME
+						<i class="fa fa-sort-asc" ng-show="sortBy=='name' && sortReverse"></i>
+						<i class="fa fa-sort-desc" ng-show="sortBy=='name' && !sortReverse"></i>
+					</th>
+					<th class="w-150" ng-click="sortBy='add'; sortReverse = !sortReverse">ADDRESS
+						<i class= "fa fa-sort-asc" ng-show="sortBy=='add' && sortReverse"></i>
+						<i class= "fa fa-sort-desc" ng-show="sortBy=='add' && !sortReverse"></i>
+					</th>
+					<th class="w-160">PHONE NO</th>
+					<th class="w-140">GENDER</th>
+					<th class="w-180">DATE OF BIRTH</th>
+					<th class="w-200">DATE OF ADMISSION</th>
+					<th class="w-130" ng-click="sortBy='stud_class'; sortReverse = !sortReverse">CLASS
+						<i class= "fa fa-sort-asc" ng-show="sortBy=='stud_class' && sortReverse"></i>
+						<i class= "fa fa-sort-desc" ng-show="sortBy=='stud_class' && !sortReverse"></i>
+					</th>
+					<th class="w-110">ACTION</th>
+				</tr>
+				<tr dir-paginate="student in studentList | orderBy:sortBy:sortReverse | filter:searchText |itemsPerPage: pageSize" current-page="currentPage">
+					<td ng-class="{'disable-row' : student.stud_status=='DISABLE'}">{{student.roll}}</td>
+					<td ng-class="{'disable-row' : student.stud_status=='DISABLE'}" >{{student.name | uppercase}}</td>
+					<td ng-class="{'disable-row' : student.stud_status=='DISABLE'}">{{student.add | uppercase}}</td>
+					<td ng-class="{'disable-row' : student.stud_status=='DISABLE'}">{{student.phno}}</td>
+					<td ng-class="{'disable-row' : student.stud_status=='DISABLE'}">{{student.gender | uppercase}}</td>
+					<td ng-class="{'disable-row' : student.stud_status=='DISABLE'}">{{student.dob}}</td>
+					<td ng-class="{'disable-row' : student.stud_status=='DISABLE'}">{{student.doa}}</td>
+					<td ng-class="{'disable-row' : student.stud_status=='DISABLE'}">{{student.stud_class | uppercase}}</td>
+					<td>
+						<button ng-click="editData(student)" data-toggle="tooltip"
+						title="Edit Student" class="trans-btn">
+							<i class="fa fa-pencil" area-hidden="true"></i>
+						</button>
+						<button class="trans-btn width-40" ng-click="disableStud(student)" ng-show="student.stud_status=='ENABLE'">
+							<i class="fa fa-ban" area-hidden="true" ></i>
+						</button>
+						<button class="trans-btn width-35" ng-click="enableStud(student)" ng-show="student.stud_status=='DISABLE'">
+							<i class="fa fa-check" area-hidden="true" ></i>
+						</button>
+					</td>
+				</tr>
+			</thead>
+		</table>
+		<dir-pagination-controls	
+	    	max-size="5"
+	    	direction-links="true"
+	   		boundary-links="true" 
+	   		on-page-change="pageChangeHandler(newPageNumber)">
+		</dir-pagination-controls>
+		<button class="addstud-btn" ng-click="gotoAddStuent()">Add Student</button>
+	</div>
+</div>

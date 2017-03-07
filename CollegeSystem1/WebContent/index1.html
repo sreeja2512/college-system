@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>  
+  <title>Angular Demo</title>
+	<link href="css/bootstrap.min.css" rel="stylesheet"></link>
+	<link href="css/style.css" rel="stylesheet"></link>
+	<link href="css/font-awesome.css" rel="stylesheet"></link>
+	<script src="lib/jquery-3.1.1.js"></script>
+	<script src="lib/bootstrap.js"></script>
+	<script src="lib/angular.min.js"></script>
+	<script src="lib/angular-animate.js"></script>
+	<script src="lib/angular-ui-router.js"></script>
+	<script src="controllers/myNgApp.js"></script>
+	<script src="controllers/studentApp.js"></script>	
+	<script src="lib/dirPagination.js"></script>	
+</head>
+<body ng-app="myNgApp" ng-controller="StudentController"> 
+	<div ui-view>
+		<h1>Hello</h1>
+		<button ng-click="gotoLoginPage()">Next</button>
+	</div>
+	<script>
+	$(document).ready(function(){
+		//$('[data-toggle="tooltip"]').tooltip();
+		//window.location('loginPage.html');
+		//console.log(window.location);
+	});
+	
+	</script>
+</body>
+</html>

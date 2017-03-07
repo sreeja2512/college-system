@@ -1,0 +1,35 @@
+<!-- <html>
+<head>  
+  <title>Login Page</title>
+	<link href="css/bootstrap.css" rel="stylesheet"></link>
+	<link href="style.css" rel="stylesheet"></link>	
+	<script src="angular.min.js"></script>
+	<script src="jquery-3.1.1.js"></script>
+	<script src="bootstrap.js"></script>
+	<script src="angular.min.js"></script>
+	<script src="angular-animate.js"></script>
+	<script src="angular-ui-router.js"></script>
+	<script src="studentApp.js"></script>		
+</head> -->
+<body ng-app="StudentApp" class="divbg">
+	<div ng-controller="StudentController" class="studDetails">		
+		<form name="loginPage">
+			<div>			
+				<input type="text" placeholder="Enter your email-id" class="userIdTxt" ng-model="model.emailid" >
+			</div>	
+			<div>
+				<input type="text" placeholder="Enter your password"  class="userIdTxt" ng-model="model.password" >
+			</div>
+			<div>
+				<button class="loginBtn" ng-click="validateUser()">Login</button>
+			</div>
+			<div ng-if="error">Please check Email/Password</div>
+			<div>
+				<a href="#/register" class="registerLink">Register User</a>
+			
+				<a href="#/forgotPassword" class="forgotLink">Forgot Password</a>
+			</div>
+		</form>
+	</div>
+ </body>
+<!-- </html> -->

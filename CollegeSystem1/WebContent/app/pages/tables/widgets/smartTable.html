@@ -1,0 +1,73 @@
+<div ng-controller="studentDetails" class="horizontal-scroll">
+  <div class="form-group select-page-size-wrap ">
+    <label>Rows on page
+      <select class="form-control selectpicker show-tick" title="Rows on page" selectpicker
+              ng-model="smartTablePageSize" ng-options="i for i in [5,10,15,20,25]">
+      </select>
+    </label>
+  </div>
+  <div ng-init="getStudentList()"></div>
+  <table class="table" st-table="smartTableData">
+    <thead>
+    <tr class="sortable ">
+      <th class="table-id" st-sort="roll" st-sort-default="true">Roll No</th>
+      <th st-sort="name">Name</th>
+      <th st-sort="add">Address</th>
+      <th st-sort="phno">Phone No</th>
+      <th st-sort="gender">Gender</th>
+      <th st-sort="dob">Date Of Birth</th>
+      <th st-sort="doa">Date Of Admission</th>
+      <th st-sort="stud_class">Class</th>
+      <th>Action</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th><input st-search="name" placeholder="Search Name" class="input-sm form-control search-input"
+                 type="search"/></th>
+      <th><input st-search="add" placeholder="Search Address" class="input-sm form-control search-input"
+                 type="search"/></th>
+      <th><input st-search="phno" placeholder="Search Phone No" class="input-sm form-control search-input"
+                 type="search"/></th>
+      <th><input st-search="gender" placeholder="Search Gender" class="input-sm form-control search-input" type="search"/>
+      </th>
+      <th><input st-search="stud_class" placeholder="Search Class" class="input-sm form-control search-input" type="search"/>
+      </th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="student in studentList">
+      <td class="table-id">{{student.roll | uppercase}}</td>
+      <td>{{student.name | uppercase}}</td>
+      <td>{{student.add | uppercase}}</td>
+      <td>{{student.phno | uppercase}}</td>
+      <td>{{student.gender | uppercase}}</td>
+      <td>{{student.dob}}</td>
+      <td>{{student.doa}}</td>
+      <td>{{student.stud_class | uppercase}}</td>
+      <td>
+      	<button ng-click="editData(student)" data-toggle="tooltip" title="Edit Student" class="trans-btn">
+			<i class="fa fa-pencil" area-hidden="true"></i>
+		</button>
+		<button class="trans-btn width-20" ng-click="disableStud(student)" ng-show="student.stud_status=='ENABLE'">
+			<i class="fa fa-ban" area-hidden="true" ></i>
+		</button>
+		<button class="trans-btn width-20" ng-click="enableStud(student)" ng-show="student.stud_status=='DISABLE'">
+			<i class="fa fa-check" area-hidden="true" ></i>
+		</button>
+      </td>
+      <!-- <td><a class="email-link" ng-href="mailto:{{item.email}}">{{item.email}}</a></td>
+      <td>{{item.age}}</td> -->
+    </tr>
+    </tbody>
+    <tfoot>
+    <tr>
+      <td colspan="6" class="text-center">
+        <div st-pagination="" st-items-by-page="smartTablePageSize" st-displayed-pages="5"></div>
+      </td>
+    </tr>
+    </tfoot>
+  </table>
+  </div>

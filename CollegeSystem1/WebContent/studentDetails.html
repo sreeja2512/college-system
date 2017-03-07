@@ -1,0 +1,64 @@
+<div ng-controller="studentDetails" class="studDetails">
+	<a href="#/studentsList">Click here to see list</a>
+	<form name="myStudentDetailsForm">
+		<h1>Student Details</h1>		
+		<div class="pad-mar">
+			<label>Roll No: {{edit}}</label>
+			<div class="input">
+				<input type="text" ng-model="model.rollno" ng-disabled="model.rollno && edit">
+			</div>
+		</div>
+		<div class="pad-mar">
+			<label>Name: </label>
+			<div class="input">
+				<input type="text" ng-model="model.name" ng-pattern="/^[A-Za-z]*$/">
+			</div>
+		</div>
+		<div class="pad-mar">
+			<label>Address: </label>
+			<div class="input">
+				<input type="text" ng-model="model.add">
+			</div>
+		</div>
+		<div class="pad-mar">
+			<label>Phone No: </label>
+			<div class="input">
+				<input type="text" ng-model="model.phno" maxlength="10"
+					ng-pattern="/^[0-9]*$/">
+			</div>
+		</div>
+		<div class="pad-mar">
+			<label>Gender: </label>
+			<div class="input">
+				<input type="text" ng-model="model.gender">
+			</div>
+		</div>
+		<div class="pad-mar">
+			<label>DOB: </label>
+			<div class="input">
+				<input type="date" ng-model="model.dob">
+			</div>
+		</div>
+		<div class="pad-mar">
+			<label>DOA: </label>
+			<div class="input">
+				<input type="date" ng-model="model.doa">
+			</div>
+		</div>
+		<div class="pad-mar">
+			<label>Class: </label>
+			<div class="input">
+				<input type="text" ng-model="model.stud_class">
+			</div>
+		</div>
+		<div class="">
+			<button ng-disabled="(myStudentDetailsForm.$invalid)"
+				ng-click="saveStudent()" class="btnstyle" ng-hide="model.rollno && edit">Submit</button>
+
+			<button ng-click="updateStudent()" class="btnstyle"
+				ng-show="model.rollno && edit">Update</button>
+
+			<button ng-click="gotoListStuent()">Next</button>
+		</div>
+	</form>
+</div>
