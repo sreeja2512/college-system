@@ -1,4 +1,4 @@
-var myNgApp = angular.module("myNgApp",['ui.router', 'ngAnimate','StudentApp','angularUtils.directives.dirPagination']);
+var myNgApp = angular.module("myNgApp",['ui.router', 'ngAnimate','StudentApp','angularUtils.directives.dirPagination','smart-table']);//,'ngCookies'
 myNgApp.config(function($stateProvider, $urlRouterProvider)
 		{
 	$stateProvider
@@ -14,7 +14,7 @@ myNgApp.config(function($stateProvider, $urlRouterProvider)
 		});
 	$urlRouterProvider.otherwise('/');
 });
-myNgApp.controller("studentDetails",function($scope,$http,$state,$rootScope,$filter){
+myNgApp.controller("studentDetails",function($scope,$http,$state,$rootScope,$filter,studentListService,$cookies){//,$cookies
 	$scope.hello = "hello";
 	$scope.disableRoll = false;
 	$scope.reverseSort = false;
@@ -49,7 +49,7 @@ myNgApp.controller("studentDetails",function($scope,$http,$state,$rootScope,$fil
 			data: $scope.model
 		}).success(function(data){
 			$scope.status = data;
-			$state.go('listStudent');
+			$state.go('tables.smart');
 		});		
 	};
 	
@@ -62,7 +62,7 @@ myNgApp.controller("studentDetails",function($scope,$http,$state,$rootScope,$fil
 			data: $scope.model
 		}).success(function(data){
 			$scope.status = data;
-			$state.go('listStudent');
+			$state.go('tables.smart');
 		});		
 	};
 	
@@ -103,7 +103,8 @@ myNgApp.controller("studentDetails",function($scope,$http,$state,$rootScope,$fil
 		
 		
 	};
-	
+	$scope.numList = [{"id":1,"name":"one"},{"id":2,"name":"two"},{"id":3,"name":"three"}];
+	$scope.smartTablePageSize = 5;
 	$scope.gotoAddStuent = function(){
 		$state.go('addstudent');
 	}
@@ -118,15 +119,35 @@ myNgApp.controller("studentDetails",function($scope,$http,$state,$rootScope,$fil
 			headers: {'content-type':'application/json'},
 			//data: $scope.model
 		}).success(function(data){
-			$scope.studentList= data;
+			//$scope.studentList= data;
+			$scope.studentList = data; 
+			$scope.studentList1 = data; //(add this line too)
+			
 			for(var i=0;i<$scope.studentList.length;i++){
 				$scope.studentList[i].dob = $filter('date')(new Date($scope.studentList[i].dob), 'yyyy-MM-dd');
 				$scope.studentList[i].doa = $filter('date')(new Date($scope.studentList[i].doa), 'yyyy-MM-dd');
+				$scope.studentList[i].roll = parseInt($scope.studentList[i].roll);
 			}
+			localStorage.setItem("studentlist",JSON.stringify($scope.studentList));
+			studentListService.setStudList($scope.studentList);
+			
+			$cookies.putObject("ss",$scope.studentList);
 		});
 	};
 	
-});
+})
+myNgApp.service('studentListService',function(){
+	this.studList = null;
+	
+	this.setStudList = function(list){
+		this.studList = list;
+	}
+	
+	this.getStudList = function(){
+		return this.studList;
+	}
+})
+;
 
 
 

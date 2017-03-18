@@ -16,9 +16,9 @@ import org.json.simple.parser.JSONParser;
 import com.google.gson.Gson;
 
 /**
- * Servlet implementation class UserServlet
+ * Servlet implementation class UserServlet1
  */
-@WebServlet("/UserServlet")
+//@WebServlet("/UserServlet")
 public class UserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -35,10 +35,10 @@ public class UserServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
 		UserService us = new UserService();
-		//User user = us.authUser(user);
 	}
 
 	/**
@@ -103,6 +103,4 @@ public class UserServlet extends HttpServlet {
 		out.flush();
 		out.close();
 	}
-	
-
-}
+	}

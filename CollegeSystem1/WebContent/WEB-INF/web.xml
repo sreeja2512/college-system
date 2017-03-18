@@ -17,14 +17,12 @@
     <servlet-name>student</servlet-name>
     <url-pattern>/student</url-pattern>
   </servlet-mapping>
-  
   <servlet>
-      <servlet-name>user</servlet-name>
-      <servlet-class>com.global.student.UserServlet</servlet-class>
+    <servlet-name>user</servlet-name>
+    <servlet-class>com.global.student.UserServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-      <servlet-name>user</servlet-name>
-      <url-pattern>/registerUser</url-pattern>
+    <servlet-name>user</servlet-name>
+    <url-pattern>/registerUser</url-pattern>
   </servlet-mapping>
-  
- </web-app>
+</web-app>

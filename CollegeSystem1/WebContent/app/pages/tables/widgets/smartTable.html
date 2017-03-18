@@ -1,13 +1,13 @@
-<div ng-controller="studentDetails" class="horizontal-scroll">
+<div ng-controller="studentDetails" class="horizontal-scroll" ng-init="getStudentList()">
   <div class="form-group select-page-size-wrap ">
     <label>Rows on page
       <select class="form-control selectpicker show-tick" title="Rows on page" selectpicker
-              ng-model="smartTablePageSize" ng-options="i for i in [5,10,15,20,25]">
+              ng-model="smartTablePageSize" ng-options="i for i in [2,5,10,15,20,25]"><!-- "num.id as num.name for num in numList"  -->
       </select>
     </label>
   </div>
-  <div ng-init="getStudentList()"></div>
-  <table class="table" st-table="smartTableData">
+  <div></div>
+  <table class="table" st-table="studentList" st-safe-src="studentList1"><!--   -->
     <thead>
     <tr class="sortable ">
       <th class="table-id" st-sort="roll" st-sort-default="true">Roll No</th>
@@ -38,7 +38,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr ng-repeat="student in studentList">
+    <tr ng-repeat="student in studentList" class="editable-tr-wrap">
       <td class="table-id">{{student.roll | uppercase}}</td>
       <td>{{student.name | uppercase}}</td>
       <td>{{student.add | uppercase}}</td>
@@ -64,7 +64,7 @@
     </tbody>
     <tfoot>
     <tr>
-      <td colspan="6" class="text-center">
+      <td colspan="9" class="text-center">
         <div st-pagination="" st-items-by-page="smartTablePageSize" st-displayed-pages="5"></div>
       </td>
     </tr>

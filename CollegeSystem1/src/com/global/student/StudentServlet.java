@@ -18,9 +18,8 @@ import org.json.simple.parser.JSONParser;
 
 import com.google.gson.Gson;
 
-
 /**
- * Servlet implementation class StudentServlet
+ * Servlet implementation class AbcServlet
  */
 @WebServlet("/StudentServlet")
 public class StudentServlet extends HttpServlet {
@@ -39,6 +38,7 @@ public class StudentServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		response.setContentType("application/json");
 		PrintWriter out = response.getWriter();
 		
@@ -69,74 +69,79 @@ public class StudentServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		StringBuffer sb = new StringBuffer();
-		try {
-			BufferedReader reader = request.getReader();
-			String line = null;
-			while((line = reader.readLine()) != null){
-				sb.append(line);
+		// TODO Auto-generated method stub
+				StringBuffer sb = new StringBuffer();
+				try {
+					BufferedReader reader = request.getReader();
+					String line = null;
+					while((line = reader.readLine()) != null){
+						sb.append(line);
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				JSONParser parser = new JSONParser();
+				JSONObject joStudent = null;
+				try {
+					joStudent = (JSONObject) parser.parse(sb.toString());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				String roll = "";
+				if(joStudent.get("roll") instanceof String){
+					roll = (String) joStudent.get("roll");
+				}else{
+					roll = (joStudent.get("roll").toString());
+				}
+				
+				String name = (String) joStudent.get("name");
+				String add = (String) joStudent.get("add");
+				String phno = (String) joStudent.get("phno");
+				String gender = (String) joStudent.get("gender");
+				String dob = (String) joStudent.get("dob");
+				String doa = (String) joStudent.get("doa");
+				String stud_class = (String) joStudent.get("stud_class");
+				Student s = new Student();
+				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+				java.util.Date dateOfBirth=null, dateOfAdd=null;
+				try {
+					 dateOfBirth = sdf.parse(dob);
+					 dateOfAdd = sdf.parse(doa);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				
+				Date sqlDob = new Date(dateOfBirth.getTime());
+				Date sqlDoa = new Date(dateOfAdd.getTime());
+				s.setRoll(roll);
+				s.setName(name);
+				s.setAdd(add);
+				s.setPhno(phno);
+				s.setGender(gender);
+				s.setDob(sqlDob);
+				s.setDoa(sqlDoa);
+				s.setStud_class(stud_class);
+				
+				StudentService ss = new StudentService();
+				String update = request.getParameter("update");
+				String disable = request.getParameter("disableStud");
+				String enable = request.getParameter("enableStud");
+				if(update != null && update.equals("update")){
+					ss.updateStudent(s);
+				}else if(disable != null && disable.equals("disableStud")){
+					ss.disableStudent(s);
+				}else if(enable != null && enable.equals("enableStud")){
+					ss.enableStudent(s);
+				}else{
+					ss.saveStudent(s);
+				}
+				
+				response.setContentType("text/html");
+				PrintWriter out = response.getWriter();
+				out.println("Sucess..");
+				out.write("Student created sucessfully");
+				out.flush();
+				out.close();
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		JSONParser parser = new JSONParser();
-		JSONObject joStudent = null;
-		try {
-			joStudent = (JSONObject) parser.parse(sb.toString());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		
-		String roll = (String) joStudent.get("roll");
-		String name = (String) joStudent.get("name");
-		String add = (String) joStudent.get("add");
-		String phno = (String) joStudent.get("phno");
-		String gender = (String) joStudent.get("gender");
-		String dob = (String) joStudent.get("dob");
-		String doa = (String) joStudent.get("doa");
-		String stud_class = (String) joStudent.get("stud_class");
-		Student s = new Student();
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-		java.util.Date dateOfBirth=null, dateOfAdd=null;
-		try {
-			 dateOfBirth = sdf.parse(dob);
-			 dateOfAdd = sdf.parse(doa);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		Date sqlDob = new Date(dateOfBirth.getTime());
-		Date sqlDoa = new Date(dateOfAdd.getTime());
-		s.setRoll(roll);
-		s.setName(name);
-		s.setAdd(add);
-		s.setPhno(phno);
-		s.setGender(gender);
-		s.setDob(sqlDob);
-		s.setDoa(sqlDoa);
-		s.setStud_class(stud_class);
-		
-		StudentService ss = new StudentService();
-		String update = request.getParameter("update");
-		String disable = request.getParameter("disableStud");
-		String enable = request.getParameter("enableStud");
-		if(update != null && update.equals("update")){
-			ss.updateStudent(s);
-		}else if(disable != null && disable.equals("disableStud")){
-			ss.disableStudent(s);
-		}else if(enable != null && enable.equals("enableStud")){
-			ss.enableStudent(s);
-		}else{
-			ss.saveStudent(s);
-		}
-		
-		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
-		out.println("Sucess..");
-		out.write("Student created sucessfully");
-		out.flush();
-		out.close();
 	}
 
-}
